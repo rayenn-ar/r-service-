@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 
 import '../constants/app_colors.dart';
 import '../widgets/primary_button.dart';
+import 'login_page.dart';
 
 class OnboardingPage extends StatelessWidget {
   const OnboardingPage({super.key});
 
-  void goToLogin() {
-    // On ira vers la page Connexion (page 3).
+  void goToLogin(BuildContext context) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const LoginPage()),
+    );
   }
 
   @override
@@ -22,7 +26,7 @@ class OnboardingPage extends StatelessWidget {
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
-                  onPressed: goToLogin,
+                  onPressed: () => goToLogin(context),
                   child: const Text(
                     'Passer',
                     style: TextStyle(
@@ -76,7 +80,10 @@ class OnboardingPage extends StatelessWidget {
                   ),
                 ),
               ),
-              PrimaryButton(text: 'Suivant', onPressed: goToLogin),
+              PrimaryButton(
+                text: 'Suivant',
+                onPressed: () => goToLogin(context),
+              ),
             ],
           ),
         ),

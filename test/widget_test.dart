@@ -20,4 +20,16 @@ void main() {
     expect(find.text('Passer'), findsOneWidget);
     expect(find.text('Suivant'), findsOneWidget);
   });
+
+  testWidgets('Suivant ouvre la page Connexion', (tester) async {
+    await tester.pumpWidget(const MyApp());
+    await tester.tap(find.text('Commencer mes achats'));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Suivant'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Bon retour'), findsOneWidget);
+    expect(find.text('Se connecter'), findsOneWidget);
+  });
 }
