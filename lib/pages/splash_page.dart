@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../constants/app_colors.dart';
 import '../widgets/primary_button.dart';
+import 'onboarding_page.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
@@ -65,7 +66,12 @@ class SplashPage extends StatelessWidget {
                     color: AppColors.orange,
                     textColor: AppColors.black,
                     onPressed: () {
-                      //On ira vers la page Onboarding
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const OnboardingPage(),
+                        ),
+                      );
                     },
                   ),
                   const SizedBox(height: 14),

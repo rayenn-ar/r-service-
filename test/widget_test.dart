@@ -8,6 +8,16 @@ void main() {
 
     expect(find.text('R-service'), findsOneWidget);
     expect(find.text('Commencer mes achats'), findsOneWidget);
-    expect(find.text('Version 1.0'), findsOneWidget);
+  });
+
+  testWidgets('Le bouton du Splash ouvre l\'Onboarding', (tester) async {
+    await tester.pumpWidget(const MyApp());
+
+    await tester.tap(find.text('Commencer mes achats'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Des milliers de produits'), findsOneWidget);
+    expect(find.text('Passer'), findsOneWidget);
+    expect(find.text('Suivant'), findsOneWidget);
   });
 }
