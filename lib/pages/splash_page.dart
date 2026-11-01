@@ -12,7 +12,6 @@ class SplashPage extends StatelessWidget {
       backgroundColor: AppColors.green,
       body: Stack(
         children: [
-          // Cercles décoratifs
           Positioned(top: -120, right: -150, child: circle(360, 0.7)),
           Positioned(bottom: 120, left: -110, child: circle(220, 0.6)),
 
@@ -49,9 +48,15 @@ class SplashPage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      feature(Icons.local_shipping_outlined, 'Livraison rapide'),
+                      feature(
+                        Icons.local_shipping_outlined,
+                        'Livraison rapide',
+                      ),
                       const SizedBox(width: 18),
-                      feature(Icons.verified_user_outlined, 'Paiement sécurisé'),
+                      feature(
+                        Icons.verified_user_outlined,
+                        'Paiement sécurisé',
+                      ),
                     ],
                   ),
                   const SizedBox(height: 14),
@@ -60,17 +65,10 @@ class SplashPage extends StatelessWidget {
                     color: AppColors.orange,
                     textColor: AppColors.black,
                     onPressed: () {
-                      // On ira vers la page Onboarding (page 2).
+                      //On ira vers la page Onboarding
                     },
                   ),
                   const SizedBox(height: 14),
-                  const Text(
-                    'Version 1.0',
-                    style: TextStyle(
-                      color: AppColors.lightGreenText,
-                      fontSize: 13,
-                    ),
-                  ),
                 ],
               ),
             ),
