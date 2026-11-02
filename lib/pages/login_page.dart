@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../constants/app_colors.dart';
 import '../widgets/input_field.dart';
 import '../widgets/primary_button.dart';
+import 'register_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -193,7 +194,12 @@ class _LoginPageState extends State<LoginPage> {
           style: TextStyle(color: AppColors.grey, fontSize: 14),
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const RegisterPage()),
+            );
+          },
           child: const Text(
             'Créer un compte',
             style: TextStyle(

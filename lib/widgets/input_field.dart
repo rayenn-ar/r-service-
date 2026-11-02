@@ -8,6 +8,7 @@ class InputField extends StatelessWidget {
   final TextEditingController controller;
   final bool isPassword;
   final TextInputType keyboardType;
+  final bool compact;
 
   const InputField({
     super.key,
@@ -16,6 +17,7 @@ class InputField extends StatelessWidget {
     required this.controller,
     this.isPassword = false,
     this.keyboardType = TextInputType.text,
+    this.compact = false,
   });
 
   @override
@@ -31,7 +33,7 @@ class InputField extends StatelessWidget {
             fontWeight: FontWeight.w600,
           ),
         ),
-        const SizedBox(height: 8),
+        SizedBox(height: compact ? 6 : 8),
         TextField(
           controller: controller,
           obscureText: isPassword,
@@ -42,9 +44,9 @@ class InputField extends StatelessWidget {
             hintStyle: const TextStyle(color: AppColors.grey),
             filled: true,
             fillColor: AppColors.white,
-            contentPadding: const EdgeInsets.symmetric(
+            contentPadding: EdgeInsets.symmetric(
               horizontal: 16,
-              vertical: 16,
+              vertical: compact ? 14 : 16,
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),

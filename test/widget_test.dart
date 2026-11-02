@@ -32,4 +32,20 @@ void main() {
     expect(find.text('Bon retour'), findsOneWidget);
     expect(find.text('Se connecter'), findsOneWidget);
   });
+
+  testWidgets("Créer un compte ouvre l'Inscription puis retour", (tester) async {
+    await tester.pumpWidget(const MyApp());
+    await tester.tap(find.text('Commencer mes achats'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Suivant'));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Créer un compte'));
+    await tester.pumpAndSettle();
+    expect(find.text("S'inscrire"), findsOneWidget);
+
+    await tester.tap(find.text('Se connecter'));
+    await tester.pumpAndSettle();
+    expect(find.text('Bon retour'), findsOneWidget);
+  });
 }
