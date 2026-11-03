@@ -48,4 +48,20 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Bon retour'), findsOneWidget);
   });
+
+  testWidgets("Mot de passe oublié s'ouvre depuis la Connexion", (tester) async {
+    await tester.pumpWidget(const MyApp());
+    await tester.tap(find.text('Commencer mes achats'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Suivant'));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Mot de passe oublié ?'));
+    await tester.pumpAndSettle();
+    expect(find.text('Envoyer le code'), findsOneWidget);
+
+    await tester.tap(find.text('Se connecter'));
+    await tester.pumpAndSettle();
+    expect(find.text('Bon retour'), findsOneWidget);
+  });
 }
