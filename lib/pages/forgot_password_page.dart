@@ -4,6 +4,7 @@ import '../constants/app_colors.dart';
 import '../widgets/input_field.dart';
 import '../widgets/primary_button.dart';
 import '../widgets/round_back_button.dart';
+import 'verification_page.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});
@@ -76,7 +77,17 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
                         keyboardType: TextInputType.emailAddress,
                       ),
                       const SizedBox(height: 28),
-                      PrimaryButton(text: 'Envoyer le code', onPressed: () {}),
+                      PrimaryButton(
+                        text: 'Envoyer le code',
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const VerificationPage(),
+                            ),
+                          );
+                        },
+                      ),
                     ],
                   ),
                 ),

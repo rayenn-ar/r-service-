@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:r_serrvice/main.dart';
@@ -61,6 +62,28 @@ void main() {
     expect(find.text('Envoyer le code'), findsOneWidget);
 
     await tester.tap(find.text('Se connecter'));
+    await tester.pumpAndSettle();
+    expect(find.text('Bon retour'), findsOneWidget);
+  });
+
+  testWidgets('La Vérification mène à la Connexion', (tester) async {
+    await tester.pumpWidget(const MyApp());
+    await tester.tap(find.text('Commencer mes achats'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Suivant'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Mot de passe oublié ?'));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Envoyer le code'));
+    await tester.pumpAndSettle();
+    expect(find.text('Vérification'), findsOneWidget);
+
+    await tester.enterText(find.byType(TextField).first, '4');
+    await tester.pump();
+    expect(find.text('4'), findsOneWidget);
+
+    await tester.tap(find.text('Réinitialiser le mot de passe'));
     await tester.pumpAndSettle();
     expect(find.text('Bon retour'), findsOneWidget);
   });
