@@ -4,6 +4,7 @@ import '../constants/app_colors.dart';
 import '../widgets/input_field.dart';
 import '../widgets/primary_button.dart';
 import 'forgot_password_page.dart';
+import 'home_page.dart';
 import 'register_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -57,7 +58,17 @@ class _LoginPageState extends State<LoginPage> {
                       const SizedBox(height: 18),
                       rememberAndForgot(),
                       const SizedBox(height: 26),
-                      PrimaryButton(text: 'Se connecter', onPressed: () {}),
+                      PrimaryButton(
+                        text: 'Se connecter',
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const HomePage(),
+                            ),
+                          );
+                        },
+                      ),
                       const SizedBox(height: 32),
                       orDivider(),
                       const SizedBox(height: 32),

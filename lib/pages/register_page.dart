@@ -4,6 +4,7 @@ import '../constants/app_colors.dart';
 import '../widgets/input_field.dart';
 import '../widgets/primary_button.dart';
 import '../widgets/round_back_button.dart';
+import 'home_page.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -100,7 +101,19 @@ class _RegisterPageState extends State<RegisterPage> {
                       const SizedBox(height: 14),
                       termsCheckbox(),
                       const SizedBox(height: 18),
-                      PrimaryButton(text: 'S\'inscrire', onPressed: () {}),
+                      PrimaryButton(
+                        text: 'S\'inscrire',
+                        onPressed: () {
+                          // Remplace toutes les pages d'avant par l'Accueil
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const HomePage(),
+                            ),
+                            (route) => false,
+                          );
+                        },
+                      ),
                     ],
                   ),
                 ),
