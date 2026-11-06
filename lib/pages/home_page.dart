@@ -4,6 +4,7 @@ import '../constants/app_colors.dart';
 import '../widgets/bottom_nav.dart';
 import '../widgets/product_card.dart';
 import 'notifications_page.dart';
+import 'search_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -22,7 +23,7 @@ class HomePage extends StatelessWidget {
             children: [
               header(context),
               const SizedBox(height: 18),
-              searchBar(),
+              searchBar(context),
               const SizedBox(height: 18),
               offerBanner(),
               const SizedBox(height: 18),
@@ -119,27 +120,35 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget searchBar() {
+  Widget searchBar(BuildContext context) {
     return Row(
       children: [
         Expanded(
-          child: Container(
-            height: 50,
-            padding: const EdgeInsets.symmetric(horizontal: 14),
-            decoration: BoxDecoration(
-              color: AppColors.white,
-              borderRadius: BorderRadius.circular(14),
-              border: Border.all(color: AppColors.border),
-            ),
-            child: const Row(
-              children: [
-                Icon(Icons.search, size: 18, color: AppColors.grey),
-                SizedBox(width: 10),
-                Text(
-                  'Rechercher un produit...',
-                  style: TextStyle(color: AppColors.mediumGrey, fontSize: 15),
-                ),
-              ],
+          child: GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SearchPage()),
+              );
+            },
+            child: Container(
+              height: 50,
+              padding: const EdgeInsets.symmetric(horizontal: 14),
+              decoration: BoxDecoration(
+                color: AppColors.white,
+                borderRadius: BorderRadius.circular(14),
+                border: Border.all(color: AppColors.border),
+              ),
+              child: const Row(
+                children: [
+                  Icon(Icons.search, size: 18, color: AppColors.grey),
+                  SizedBox(width: 10),
+                  Text(
+                    'Rechercher un produit...',
+                    style: TextStyle(color: AppColors.mediumGrey, fontSize: 15),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

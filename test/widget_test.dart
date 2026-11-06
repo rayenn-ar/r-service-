@@ -153,4 +153,38 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Bonjour, Rayen'), findsOneWidget);
   });
+
+  testWidgets('La barre de recherche ouvre la Recherche', (tester) async {
+    await tester.pumpWidget(const MyApp());
+    await tester.tap(find.text('Commencer mes achats'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Suivant'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Se connecter'));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Rechercher un produit...'));
+    await tester.pumpAndSettle();
+    expect(find.text('Tendances'), findsOneWidget);
+    expect(find.text('Résultats pour « écouteurs »'), findsOneWidget);
+
+    // La croix du champ vide la recherche et cache les résultats
+    await tester.tap(find.byIcon(Icons.close).first);
+    await tester.pump();
+    expect(find.text('Résultats pour « écouteurs »'), findsNothing);
+
+    // Une croix de puce retire seulement cette recherche
+    await tester.tap(find.byIcon(Icons.close).at(1));
+    await tester.pump();
+    expect(find.text('sneakers'), findsNothing);
+    expect(find.text('montre'), findsOneWidget);
+
+    await tester.tap(find.text('Effacer'));
+    await tester.pump();
+    expect(find.text('montre'), findsNothing);
+
+    await tester.tap(find.byIcon(Icons.chevron_left));
+    await tester.pumpAndSettle();
+    expect(find.text('Bonjour, Rayen'), findsOneWidget);
+  });
 }
